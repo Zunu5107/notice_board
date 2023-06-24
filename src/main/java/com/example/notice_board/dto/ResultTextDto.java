@@ -9,4 +9,5 @@ public class ResultTextDto {
     public ResultTextDto(String result) {
         this.result = result;
     }
+
 }

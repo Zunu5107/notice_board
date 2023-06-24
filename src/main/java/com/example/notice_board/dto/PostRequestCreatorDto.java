@@ -9,7 +9,8 @@ public class PostRequestCreatorDto extends PostDto{
     private String password;
 
     public PostRequestCreatorDto(String title, String username, String password, String contents) {
-        super(title,username,contents);
+        super(title, username, contents);
         this.password = password;
     }
+
 }

@@ -21,4 +21,5 @@ public class PostRequestModifyDto extends PostDto{
                 "contents='" + super.getContents() + '\'' +
                 '}';
     }
+
 }

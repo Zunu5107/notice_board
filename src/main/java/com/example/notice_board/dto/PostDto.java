@@ -16,4 +16,5 @@ public abstract class PostDto {
         this.username = username;
         this.contents = contents;
     }
+
 }

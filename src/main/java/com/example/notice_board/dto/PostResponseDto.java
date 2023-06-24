@@ -20,4 +20,5 @@ public class PostResponseDto extends PostDto {
     public String toString() {
         return String.format("%d, %s, %s, %s, %s", this.postnumber, super.getTitle(), super.getUsername(), super.getContents(), this.createdAt);
     }
+
 }
