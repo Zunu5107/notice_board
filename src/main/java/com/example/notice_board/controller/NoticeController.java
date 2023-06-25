@@ -1,12 +1,8 @@
 package com.example.notice_board.controller;
 
 
-import com.example.notice_board.dto.PostRequestCreatorDto;
-import com.example.notice_board.dto.PostRequestModifyDto;
-import com.example.notice_board.dto.PostResponseDto;
-import com.example.notice_board.dto.ResultTextDto;
+import com.example.notice_board.dto.*;
 import com.example.notice_board.service.PostService;
-import com.mysql.cj.util.DnsSrv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +19,7 @@ public class NoticeController {
     public NoticeController(PostService postService) {
         this.postService = postService;
     }
+
 
     // GET
     // http://localhost:8080/api/posts
@@ -49,13 +46,17 @@ public class NoticeController {
     // http://localhost:8080/api/posts/{id}
     @PutMapping("/posts/{id}")
     public PostResponseDto ModifiedPost(@PathVariable Long id, @RequestBody PostRequestModifyDto requestDto){
+        System.out.println("requestDto.toString() = " + requestDto.toString());
         return postService.modifiedSelectPost(id,requestDto);
     }
 
     // DELETE
     // http://localhost:8080/api/posts/{id}
     @DeleteMapping ("/posts/{id}")
-    public ResultTextDto DeletePost(@PathVariable Long id, @RequestBody Map<String, String> passwordMap){
-        return postService.DeleteSelectPost(id, passwordMap);
+    public ResultResponseTextDto DeletePost(@PathVariable Long id, @RequestBody PostRequestDeleteDto requestDto){
+        return postService.DeleteSelectPost(id, requestDto);
     }
+
+    @GetMapping("/test")
+    public ResultResponseTextDto Temp(){ return new ResultResponseTextDto("Success"); }
 }

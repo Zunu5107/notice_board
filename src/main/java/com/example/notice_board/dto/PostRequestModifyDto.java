@@ -1,25 +1,32 @@
 package com.example.notice_board.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
-public class PostRequestModifyDto extends PostDto{
+@Setter
+public class PostRequestModifyDto{
+    private String username;
     //modifity nullable = false;
     private String password;
+    private String title;
+    private String contents;
 
-    public PostRequestModifyDto(String title, String username, String password, String contents) {
-        super(title,username,contents);
+    public PostRequestModifyDto(String username, String password, String title, String contents) {
+        this.username = username;
         this.password = password;
+        this.title = title;
+        this.contents = contents;
     }
 
     @Override
     public String toString() {
         return "PostRequestModifyDto{" +
-                "title='" + super.getTitle() + '\'' +
-                "username='" + super.getUsername() + '\'' +
-                "password='" + this.password + '\'' +
-                "contents='" + super.getContents() + '\'' +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", title='" + title + '\'' +
+                ", contents='" + contents + '\'' +
                 '}';
     }
-
 }

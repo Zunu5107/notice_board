@@ -1,9 +1,6 @@
 package com.example.notice_board.service;
 
-import com.example.notice_board.dto.PostRequestCreatorDto;
-import com.example.notice_board.dto.PostRequestModifyDto;
-import com.example.notice_board.dto.PostResponseDto;
-import com.example.notice_board.dto.ResultTextDto;
+import com.example.notice_board.dto.*;
 import com.example.notice_board.entity.Post;
 import com.example.notice_board.repository.PostRepository;
 import jakarta.transaction.Transactional;
@@ -58,17 +55,17 @@ public class PostService {
     }
 
     // 게시글의 id + 패스워드 동일화 체크
-    public ResultTextDto DeleteSelectPost(long id, Map<String, String> passwordMap) {
-        String password = passwordMap.get("password");
+    public ResultResponseTextDto DeleteSelectPost(long id, PostRequestDeleteDto requestDto) {
+        String password = requestDto.getPassword();
         if (password == null)
-            return new ResultTextDto("RequestBody Error");
+            return new ResultResponseTextDto("RequestBody Error");
         Post changepost = findPost(id);
         if(CheckPassword(changepost, password)){
             this.postRepository.delete(changepost);
 
-            return new ResultTextDto("Success");
+            return new ResultResponseTextDto("Success");
         }
-        return new ResultTextDto("Fail");
+        return new ResultResponseTextDto("Fail");
     }
 
     private Post findPost(long id) {

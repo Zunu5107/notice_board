@@ -2,15 +2,20 @@ package com.example.notice_board.dto;
 
 import lombok.Getter;
 
-@Getter
-public class PostRequestCreatorDto extends PostDto{
+import java.time.LocalDateTime;
 
+@Getter
+public class PostRequestCreatorDto{
+    private String username;
     //modifity nullable = false;
     private String password;
+    private String title;
+    private String contents;
 
-    public PostRequestCreatorDto(String title, String username, String password, String contents) {
-        super(title, username, contents);
+    public PostRequestCreatorDto(String username, String password, String title, String contents) {
+        this.username = username;
         this.password = password;
+        this.title = title;
+        this.contents = contents;
     }
-
 }

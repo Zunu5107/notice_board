@@ -6,19 +6,24 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 
 @Getter
-public class PostResponseDto extends PostDto {
-
-    private Long postnumber;
+public class PostResponseDto {
+    private Long postNumber;
+    private String title;
+    private String username;
+    private String contents;
     private LocalDateTime createdAt;
+
     public PostResponseDto(Post post) {
-        super(post.getTitle(),post.getUsername(),post.getContents());
-        this.postnumber = post.getPostnumber();
+        this.postNumber = post.getPostnumber();
+        this.title = post.getTitle();
+        this.username = post.getUsername();
+        this.contents = post.getContents();
         this.createdAt = post.getCreatedAt();
     }
 
     @Override
     public String toString() {
-        return String.format("%d, %s, %s, %s, %s", this.postnumber, super.getTitle(), super.getUsername(), super.getContents(), this.createdAt);
+        return String.format("%d, %s, %s, %s, %s", this.postNumber, this.username, this.title, this.contents, this.createdAt);
     }
 
 }
